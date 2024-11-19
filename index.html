@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geomdo</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+    <div>
+        <img src="photo/stand.jpg" class="move" id="image"></img>
+    </div>
+
+    <div class="btn">
+        <button class="start">start</button>
+        <button class="stop">stop</button>
+    </div>
+
+
+
+
+    <audio id="sound" src="Beep.m4a" preload="auto"></audio>
+
+    <script>
+
+        let intervalID;
+        let isPlaying = false;
+
+        document.querySelector('.start').addEventListener('click',function(){
+            
+            if(!isPlaying){
+
+                document.getElementById('image').src = 'photo/move.gif';
+
+                function playSound(){
+                    var sound = document.getElementById('sound');
+                    sound.play();
+
+                    let randomInterval = Math.random() * 7000+5000;
+
+                    intervalId = setTimeout(playSound, randomInterval);
+                }
+                playSound();
+            }
+            
+        });
+
+        document.querySelector('.stop').addEventListener('click', function(){
+            clearTimeout(intervalId);
+            isPlaying = false;
+
+            document.getElementById('image').src='photo/stand.jpg';
+        })
+
+
+    </script>
+
+
+</body>
+</html>

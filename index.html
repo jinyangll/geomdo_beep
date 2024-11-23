@@ -13,8 +13,8 @@
     </div>
 
     <div class="btn">
-        <button class="start">start</button>
-        <button class="stop">stop</button>
+        <button class="toggle">start</button>
+        <!-- <button class="stop">stop</button> -->
     </div>
 
 
@@ -27,31 +27,45 @@
         let intervalID;
         let isPlaying = false;
 
-        document.querySelector('.start').addEventListener('click',function(){
+
+        document.querySelector('.toggle').addEventListener('click',function(){
             
+            const button = this; // 현재 버튼 참조
+
             if(!isPlaying){
+                isPlaying = true;
+                button.textContent = 'stop';
 
                 document.getElementById('image').src = 'photo/move.gif';
 
                 function playSound(){
-                    var sound = document.getElementById('sound');
+                    const sound = document.getElementById('sound');
                     sound.play();
 
-                    let randomInterval = Math.random() * 7000+5000;
+                    const randomInterval = Math.random() * 10000+5000;
 
                     intervalId = setTimeout(playSound, randomInterval);
                 }
                 playSound();
             }
+            else{
+                clearTimeout(intervalId);
+                isPlaying = false;
+
+                button.textContent = 'start';
+                document.getElementById('image').src= 'photo/stand.jpg';
+
+            }
             
         });
 
-        document.querySelector('.stop').addEventListener('click', function(){
-            clearTimeout(intervalId);
-            isPlaying = false;
+        // document.querySelector('.stop').addEventListener('click', function(){
+        //     clearTimeout(intervalId);
+        //     isPlaying = false;
+        //     // flag == false;
 
-            document.getElementById('image').src='photo/stand.jpg';
-        })
+        //     document.getElementById('image').src='photo/stand.jpg';
+        // })
 
 
     </script>

@@ -5,7 +5,7 @@ body{
     flex-direction: column;
 
     align-items: center;
-    max-height: 400px;
+    max-height: 1000px;
     background-color: white;
     margin: 30px;
 }
@@ -27,7 +27,15 @@ body{
     color:white;
     font-weight: bold;
     font-size: larger;
-    background-color: rgba(12, 12, 114, 0.945);
+    background-color:#2450A6;
     margin: 5px;
     
+}
+
+#time-setting-btn{
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color:#F29F80;
+    margin: 5px;
 }

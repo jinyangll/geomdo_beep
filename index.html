@@ -8,14 +8,29 @@
 </head>
 <body>
 
+    <h3>Time Setting</h3>
+
+    <form id="time-form">
+        <input type="number" id="min-time" name="min-time" min="3" max="15" step="1" required>
+        <input type="number" id="max-time" name="max-time" min="3" max="15" step="1" required>
+        <button type="submit" id="time-setting-btn">setting</button>
+      </form>
+
+
+
     <div>
         <img src="photo/stand.jpg" class="move" id="image"></img>
     </div>
+
+    
+
 
     <div class="btn">
         <button class="toggle">start</button>
         <!-- <button class="stop">stop</button> -->
     </div>
+
+
 
 
 
@@ -26,6 +41,30 @@
 
         let intervalID;
         let isPlaying = false;
+
+        // 최대 최소 시간 default
+        let minTime = 5000;
+        let maxTime = 15000;
+
+
+        document.getElementById('time-form').addEventListener('submit',
+        function(event){event.preventDefault();
+            const minInput = document.getElementById('min-time').value;
+            const maxInput = document.getElementById('max-time').value;
+
+            if (parseInt(minInput)> parseInt(maxInput)){
+                alert('min > max');
+                return;
+            }
+
+            minTime = parseInt(minInput) * 1000;
+            maxTime = parseInt(maxInput)*1000;
+        
+            
+        
+        })
+
+
 
 
         document.querySelector('.toggle').addEventListener('click',function(){
@@ -42,7 +81,7 @@
                     const sound = document.getElementById('sound');
                     sound.play();
 
-                    const randomInterval = Math.random() * 10000+5000;
+                    const randomInterval = Math.random() * (maxTime-minTime) + minTime;
 
                     intervalId = setTimeout(playSound, randomInterval);
                 }

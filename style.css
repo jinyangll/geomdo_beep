@@ -27,7 +27,7 @@ body{
     color:white;
     font-weight: bold;
     font-size: larger;
-    background-color:#2450A6;
+    background-color:#022859;
     margin: 5px;
     
 }
@@ -36,6 +36,7 @@ body{
     border-radius: 5px;
     border: none;
     color: white;
+    width: 42px;
     background-color:#F29F80;
     margin: 5px;
 }
